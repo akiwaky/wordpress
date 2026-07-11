@@ -1,20 +1,22 @@
 /**
  * Akiwaky visual foundation.
- *
- * Keep this first iteration intentionally small. These tokens can evolve into
- * the MVP design system after the installation flow has been validated.
  */
 
 :root {
-	--aki-ink: #2f2529;
-	--aki-muted: #6f6268;
+	--aki-ink: #392b2f;
+	--aki-muted: #76656b;
 	--aki-surface: #fffaf7;
+	--aki-surface-strong: #fff3ed;
 	--aki-accent: #b75d69;
 	--aki-accent-hover: #934652;
+	--aki-sky: #ccecf3;
+	--aki-gold: #f2c66d;
 	--aki-border: #eadfda;
-	--aki-radius-sm: 8px;
-	--aki-radius-md: 14px;
-	--aki-shadow-soft: 0 10px 30px rgba(47, 37, 41, 0.08);
+	--aki-radius-sm: 10px;
+	--aki-radius-md: 18px;
+	--aki-radius-lg: 28px;
+	--aki-shadow-soft: 0 12px 34px rgba(78, 49, 58, 0.10);
+	--aki-shadow-card: 0 16px 38px rgba(78, 49, 58, 0.14);
 }
 
 body {
@@ -23,7 +25,14 @@ body {
 }
 
 .site-header {
-	border-bottom-color: var(--aki-border);
+	background: rgba(255, 250, 247, 0.96);
+	border-bottom: 1px solid var(--aki-border);
+	box-shadow: 0 4px 24px rgba(78, 49, 58, 0.05);
+}
+
+.site-branding .site-title a,
+.site-branding .site-description {
+	color: var(--aki-ink);
 }
 
 h1,
@@ -33,6 +42,7 @@ h4,
 h5,
 h6 {
 	color: var(--aki-ink);
+	letter-spacing: -0.02em;
 }
 
 a {
@@ -80,6 +90,12 @@ input[type="submit"]:hover,
 
 .site-main ul.products li.product img {
 	border-radius: var(--aki-radius-md);
+	transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.site-main ul.products li.product:hover img {
+	box-shadow: var(--aki-shadow-soft);
+	transform: translateY(-3px);
 }
 
 .woocommerce-info,
@@ -88,4 +104,239 @@ input[type="submit"]:hover,
 p.no-comments {
 	border-radius: var(--aki-radius-sm);
 	box-shadow: var(--aki-shadow-soft);
+}
+
+/* Home hero
+ *
+ * Add the class "aki-home-hero" to a Gutenberg Cover block and place a Group
+ * with the class "aki-hero-panel" inside it.
+ */
+.aki-home-hero {
+	align-items: center;
+	border: 1px solid rgba(183, 93, 105, 0.14);
+	border-radius: var(--aki-radius-lg);
+	box-shadow: var(--aki-shadow-soft);
+	display: flex;
+	isolation: isolate;
+	margin-block: 1.5rem 4.5rem;
+	min-height: clamp(480px, 63vw, 680px);
+	overflow: hidden;
+	padding: clamp(1.25rem, 4vw, 4rem);
+}
+
+.aki-home-hero .wp-block-cover__image-background {
+	object-position: center center;
+	transition: transform 600ms ease;
+}
+
+.aki-home-hero:hover .wp-block-cover__image-background {
+	transform: scale(1.015);
+}
+
+.aki-home-hero .wp-block-cover__background {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 250, 247, 0.96) 0%,
+		rgba(255, 250, 247, 0.88) 31%,
+		rgba(255, 250, 247, 0.28) 56%,
+		rgba(255, 250, 247, 0) 78%
+	) !important;
+	opacity: 1 !important;
+}
+
+.aki-home-hero .wp-block-cover__inner-container {
+	margin: 0;
+	max-width: 1180px;
+	width: 100%;
+}
+
+.aki-hero-panel {
+	color: var(--aki-ink);
+	max-width: 500px;
+	padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.aki-hero-panel h1,
+.aki-hero-panel h2 {
+	font-size: clamp(2.35rem, 5vw, 4.75rem);
+	line-height: 0.98;
+	margin-bottom: 1.25rem;
+}
+
+.aki-hero-panel p {
+	color: var(--aki-muted);
+	font-size: clamp(1rem, 1.7vw, 1.25rem);
+	line-height: 1.6;
+	max-width: 42ch;
+}
+
+.aki-hero-panel .wp-block-buttons {
+	margin-top: 1.75rem;
+}
+
+.aki-hero-panel .wp-block-button__link {
+	background: var(--aki-accent);
+	border-radius: 999px;
+	box-shadow: 0 8px 20px rgba(183, 93, 105, 0.24);
+	color: #fff;
+	font-weight: 700;
+	padding: 0.9rem 1.5rem;
+}
+
+.aki-hero-panel .wp-block-button__link:hover {
+	background: var(--aki-accent-hover);
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+/* Category gallery
+ *
+ * Add "aki-home-categories" to the outer Group, "aki-category-grid" to a
+ * Columns block and "aki-category-card" to each individual Cover block.
+ */
+.aki-home-categories {
+	margin-block: 3.5rem 5rem;
+}
+
+.aki-home-categories > h2 {
+	font-size: clamp(2rem, 3.5vw, 3.25rem);
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
+
+.aki-home-categories > p {
+	color: var(--aki-muted);
+	margin: 0 auto 2rem;
+	max-width: 58ch;
+	text-align: center;
+}
+
+.aki-category-grid {
+	display: grid !important;
+	gap: clamp(1rem, 2.2vw, 1.75rem);
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.aki-category-grid > .wp-block-column {
+	margin: 0 !important;
+	min-width: 0;
+}
+
+.aki-category-card {
+	aspect-ratio: 4 / 5;
+	border: 1px solid rgba(183, 93, 105, 0.14);
+	border-radius: var(--aki-radius-md);
+	box-shadow: var(--aki-shadow-soft);
+	min-height: 0;
+	overflow: hidden;
+	transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+.aki-category-card:hover {
+	box-shadow: var(--aki-shadow-card);
+	transform: translateY(-6px);
+}
+
+.aki-category-card .wp-block-cover__image-background {
+	transition: transform 420ms ease;
+}
+
+.aki-category-card:hover .wp-block-cover__image-background {
+	transform: scale(1.045);
+}
+
+.aki-category-card .wp-block-cover__background {
+	background: linear-gradient(
+		180deg,
+		rgba(57, 43, 47, 0) 46%,
+		rgba(57, 43, 47, 0.72) 100%
+	) !important;
+	opacity: 1 !important;
+}
+
+.aki-category-card .wp-block-cover__inner-container {
+	align-self: flex-end;
+	padding: 1.25rem;
+	width: 100%;
+}
+
+.aki-category-card h3,
+.aki-category-card p,
+.aki-category-card a {
+	color: #fff;
+	margin: 0;
+	text-decoration: none;
+	text-shadow: 0 2px 12px rgba(57, 43, 47, 0.45);
+}
+
+.aki-category-card h3 {
+	font-size: clamp(1.2rem, 2vw, 1.7rem);
+}
+
+.aki-category-card a::after {
+	content: "";
+	inset: 0;
+	position: absolute;
+	z-index: 2;
+}
+
+@media (max-width: 960px) {
+	.aki-category-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.aki-home-hero {
+		min-height: 560px;
+	}
+}
+
+@media (max-width: 600px) {
+	.aki-home-hero {
+		align-items: flex-end;
+		border-radius: var(--aki-radius-md);
+		margin-block: 0.75rem 3rem;
+		min-height: 650px;
+		padding: 1rem;
+	}
+
+	.aki-home-hero .wp-block-cover__image-background {
+		object-position: center top;
+	}
+
+	.aki-home-hero .wp-block-cover__background {
+		background: linear-gradient(
+			180deg,
+			rgba(255, 250, 247, 0) 34%,
+			rgba(255, 250, 247, 0.90) 66%,
+			rgba(255, 250, 247, 0.98) 100%
+		) !important;
+	}
+
+	.aki-hero-panel {
+		max-width: none;
+		padding: 1rem;
+	}
+
+	.aki-hero-panel h1,
+	.aki-hero-panel h2 {
+		font-size: clamp(2.25rem, 12vw, 3.4rem);
+	}
+
+	.aki-category-grid {
+		gap: 0.9rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.aki-category-card .wp-block-cover__inner-container {
+		padding: 0.9rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.aki-home-hero .wp-block-cover__image-background,
+	.aki-category-card,
+	.aki-category-card .wp-block-cover__image-background,
+	.site-main ul.products li.product img {
+		transition: none;
+	}
 }
