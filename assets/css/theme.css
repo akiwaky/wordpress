@@ -1,0 +1,91 @@
+/**
+ * Akiwaky visual foundation.
+ *
+ * Keep this first iteration intentionally small. These tokens can evolve into
+ * the MVP design system after the installation flow has been validated.
+ */
+
+:root {
+	--aki-ink: #2f2529;
+	--aki-muted: #6f6268;
+	--aki-surface: #fffaf7;
+	--aki-accent: #b75d69;
+	--aki-accent-hover: #934652;
+	--aki-border: #eadfda;
+	--aki-radius-sm: 8px;
+	--aki-radius-md: 14px;
+	--aki-shadow-soft: 0 10px 30px rgba(47, 37, 41, 0.08);
+}
+
+body {
+	color: var(--aki-ink);
+	background-color: var(--aki-surface);
+}
+
+.site-header {
+	border-bottom-color: var(--aki-border);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--aki-ink);
+}
+
+a {
+	color: var(--aki-accent);
+}
+
+a:hover,
+a:focus {
+	color: var(--aki-accent-hover);
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button,
+.added_to_cart,
+.wc-block-components-button {
+	border-radius: var(--aki-radius-sm);
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button.alt,
+.added_to_cart.alt,
+.wc-block-components-button:not(.is-link) {
+	background-color: var(--aki-accent);
+	border-color: var(--aki-accent);
+	color: #fff;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+.button.alt:hover,
+.added_to_cart.alt:hover,
+.wc-block-components-button:not(.is-link):hover {
+	background-color: var(--aki-accent-hover);
+	border-color: var(--aki-accent-hover);
+	color: #fff;
+}
+
+.site-main ul.products li.product img {
+	border-radius: var(--aki-radius-md);
+}
+
+.woocommerce-info,
+.woocommerce-message,
+.woocommerce-noreviews,
+p.no-comments {
+	border-radius: var(--aki-radius-sm);
+	box-shadow: var(--aki-shadow-soft);
+}
