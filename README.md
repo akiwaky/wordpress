@@ -1,34 +1,58 @@
 # Akiwaky Storefront Child
 
-Tema hijo mínimo para la tienda WooCommerce de Akiwaky, basado en **Storefront**.
-
-## Objetivo de esta primera versión
-
-- Confirmar el flujo GitHub → ZIP → WordPress.
-- Conservar Storefront como tema padre.
-- Tener un lugar seguro para estilos y funciones propias.
-- Evitar cambios grandes de diseño antes de validar la instalación.
+Tema hijo para la tienda WooCommerce de Akiwaky, basado en **Storefront**.
 
 ## Requisitos
 
 1. WordPress con WooCommerce.
-2. Tema **Storefront** instalado (no necesita estar activo antes de subir este child theme).
+2. Tema **Storefront** instalado.
 
-## Instalación rápida
+## Instalación o actualización
 
 1. En GitHub abre **Code → Download ZIP**.
 2. En WordPress ve a **Apariencia → Temas → Añadir nuevo → Subir tema**.
 3. Selecciona el ZIP descargado.
-4. Instálalo y activa **Akiwaky Storefront Child**.
-5. Limpia la caché del sitio/navegador si no ves el cambio.
+4. Si WordPress detecta una versión existente, elige **Reemplazar el actual con el subido**.
+5. Confirma que **Akiwaky Storefront Child** continúe activo.
+6. Limpia la caché si no ves los cambios.
 
-## Qué cambia visualmente
+## Home visual 0.2
 
-Solo introduce variables base de color, pequeños ajustes tipográficos, botones redondeados y un ancho de lectura más cómodo. No reemplaza plantillas de WooCommerce ni modifica productos, pedidos o configuración.
+La versión 0.2 incorpora estilos responsive para un hero y cuatro tarjetas de categoría. Las imágenes permanecen en la Biblioteca de medios; el tema solo controla su presentación.
+
+### Hero
+
+1. Inserta un bloque **Portada** y selecciona `hero_og`.
+2. En **Avanzado → Clase(s) CSS adicional(es)** agrega:
+   `aki-home-hero`
+3. Dentro de la portada inserta un bloque **Grupo**.
+4. Al Grupo agrégale:
+   `aki-hero-panel`
+5. Dentro del Grupo coloca un encabezado, párrafo y botón.
+
+La imagen queda visible hacia la derecha en escritorio y el texto sobre un degradado claro a la izquierda. En móvil el contenido pasa a la parte inferior.
+
+### Categorías
+
+1. Inserta un bloque **Grupo** y agrega la clase:
+   `aki-home-categories`
+2. Dentro coloca un encabezado, texto introductorio y un bloque **Columnas** de cuatro columnas.
+3. Al bloque Columnas agrega:
+   `aki-category-grid`
+4. Dentro de cada columna coloca un bloque **Portada**, usando:
+   - `category_new`
+   - `category_ropa_50`
+   - `category_panal`
+   - `category_accesorio`
+5. A cada Portada agrega:
+   `aki-category-card`
+6. Dentro de cada tarjeta coloca un encabezado enlazado a su categoría correspondiente.
+
+En escritorio se muestran cuatro tarjetas; en tablet y móvil pasan a una cuadrícula de dos columnas.
 
 ## Estructura
 
-- `style.css`: metadatos obligatorios del tema y estilos base.
-- `functions.php`: carga segura de estilos del padre y del child theme.
-- `assets/css/theme.css`: personalización visual incremental.
-- `AGENTS.md`: reglas para futuras contribuciones asistidas.
+- `style.css`: metadatos y versión del tema.
+- `functions.php`: carga segura de estilos.
+- `assets/css/theme.css`: sistema visual, hero, categorías y WooCommerce.
+- `AGENTS.md`: reglas para futuras contribuciones.
