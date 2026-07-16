@@ -35,6 +35,15 @@ function akiwaky_storefront_child_enqueue_styles() {
 		array( 'akiwaky-storefront-child-style' ),
 		$theme->get( 'Version' )
 	);
+
+	if ( function_exists( 'is_shop' ) && is_shop() ) {
+		wp_enqueue_style(
+			'akiwaky-shop',
+			get_stylesheet_directory_uri() . '/assets/css/shop.css',
+			array( 'akiwaky-theme' ),
+			$theme->get( 'Version' )
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'akiwaky_storefront_child_enqueue_styles', 20 );
 
