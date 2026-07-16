@@ -2,6 +2,20 @@
 
 Tema hijo para la tienda WooCommerce de Akiwaky, basado en **Storefront**.
 
+## MVP baseline — v0.3.2
+
+La versión **0.3.2** es el punto de referencia aprobado para el MVP de `store.akiwaky.cloud`.
+
+Incluye:
+
+- Home visual aprobada y congelada por ahora.
+- Shop sin hero adicional y con acceso directo al catálogo.
+- Fotografías de producto completas, sin recortes forzados.
+- Catálogo responsive: tres columnas en escritorio, dos en tablet y una en móvil.
+- Flujo base de WooCommerce para producto, carrito, checkout y pago manual.
+
+Todo cambio posterior debe tratarse como un incremento sobre este baseline y evitar modificar la home salvo que se solicite explícitamente.
+
 ## Requisitos
 
 1. WordPress con WooCommerce.
